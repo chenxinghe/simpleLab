@@ -1,0 +1,232 @@
+<!--
+data = {
+    courseModal:{
+        active: "active",
+        create: "create",
+        course: {name, course_id, description, studentList, labList}},
+    },
+    LabModal:{
+        active: "active",
+        lab: {name, lab_id, description, equipmentList}},
+    },
+    Equipment:{
+        active: "active",
+    },
+}
+-->
+{{#courseModal}}
+    <li{{#active}} class="active"{{/active}}>
+        <div class="collapsible-header" style="background: #00acc1;"><i class="material-icons">info</i>Info
+        </div>
+        <!--        <div id="setCourseText" class="row collapsible-body"{{#active}} style="display: block;"{{/active}}>-->
+        <div class="row collapsible-body"{{#active}} style="display: block;"{{/active}}>
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="course_name" type="text"
+                               value="{{course.name}}">
+                        <label for="course_name"{{#course.name}} class="active"{{/course.name}}>Course
+                            Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="course_code" type="text"
+                               value="{{course.course_id}}">
+                        <label for="course_code"{{#course.course_id}} class="active"{{/course.course_id}}>Course
+                            Code</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="course_invitecode" type="text"
+                               value="{{course.invite_code}}">
+                        <label for="course_code"{{#course.invite_code}} class="active"{{/course.invite_code}}>Course
+                        Invite Code</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="course_description"
+                                  class="materialize-textarea">{{course.description}}</textarea>
+                        <label for="course_description"{{#course.description}}
+                               class="active"{{/course.description}}>Course
+                            Description</label>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                {{#create}}
+                    <button id="courseSaveBtn" class="waves-effect waves-light modal-close right btn btn_margin"
+                            style="background:#dd0052;" type="submit" name="action">
+                        Create
+                    </button>
+                {{/create}}
+                {{^create}}
+                    <button id="courseEditBtn" class="waves-effect waves-light modal-close right btn btn_margin"
+                            style="background:#dd0052;" type="submit" name="action">
+                        Save
+                    </button>
+                {{/create}}
+            </div>
+        </div>
+    </li>
+    <!--student list-->
+    <li>
+        <div class="collapsible-header" style="background: #f1cc36"><i class="material-icons">perm_identity</i>Students
+        </div>
+        <div class="collapsible-body">
+            <div class="row">
+                <div class="input-field col s4">
+                    <table id="student_list_table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="input-field col s8">
+                    <div class="input-field col s10">
+                        <input id="searchStudent" type="text" class="validate">
+                        <label for="searchStudent">Student Name</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <a id="searchStudentBtn" href="#"><i class="material-icons">search</i></a>
+                    </div>
+                    <table id="student_search_result_table">
+                        <thead>
+                        <tr>
+                            <th>Search result</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </li>
+    <!--Lab list-->
+    <li>
+        <div class="collapsible-header" style="background:#dd0052"><i class="material-icons">laptop</i>Labs
+        </div>
+        <div class="collapsible-body">
+            <div class="row">
+                <div class="input-field col s4">
+                    <table id="course_lab_list">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="input-field col s8">
+                    <table id="c_search_result_lab_list">
+                        <thead>
+                        <tr>
+                            <th>Current Labs</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </li>
+{{/courseModal}}
+{{#labModal}}
+    <li{{#active}} class="active"{{/active}}>
+        <div class="collapsible-header" style="background: #00acc1">
+            <i class="material-icons">info</i>Create New Lab
+        </div>
+        <div class="row collapsible-body"{{#active}} style="display: block;"{{/active}}>
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="lab_name" type="text" class="validate"
+                               value="{{lab.name}}">
+                        <label for="lab_name"{{#lab.name}} class="active"{{/lab.name}}>Lab Name</label>
+                    </div>
+                    <div class="col s6 valign-wrapper" style="display: none;">
+                        <label class="col s4"><h6>Security: </h6></label>
+                        <label class="col s4">
+                            <input class="with-gap" name="group2" type="radio" checked/>
+                            <span>Public</span>
+                        </label>
+                        <label class="col s4">
+                            <input class="with-gap" name="group2" type="radio"/>
+                            <span>Private</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="lab_description"
+                                  class="materialize-textarea validate">{{lab.description}}</textarea>
+                        <label for="lab_description" {{#lab.description}} class="active"{{/lab.description}}>Lab
+                            Decription</label>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                {{#create}}
+                    <button id="labSaveBtn" class="waves-effect waves-light modal-close right btn btn_margin"
+                            style="background:#dd0052;" type="submit" name="action">
+                        Create
+                    </button>
+                {{/create}}
+                {{^create}}
+                    <button id="labEditBtn" class="waves-effect waves-light modal-close right btn btn_margin"
+                            style="background:#dd0052;" type="submit" name="action">
+                        Save
+                    </button>
+                    <a href="teacher/setuplab/{{lab.id}}" class = "button waves-effect waves-light right btn btn_margin" style="background:#dd0052;">
+                        Setup
+                    </a>
+                {{/create}}
+            </div>
+        </div>
+    </li>
+<!--    <li>-->
+<!--        <div class="collapsible-header" style="background: #f1cc36"><i class="material-icons">laptop</i>Search-->
+<!--            for Labs-->
+<!--        </div>-->
+<!--        <div class="collapsible-body">-->
+<!--            <div class="row">-->
+<!--                <div class="input-field col s12">-->
+<!--                    <div class="input-field col s10">-->
+<!--                        <input id="modalsearchLab" type="text" class="validate">-->
+<!--                        <label for="searchLab">Student Name</label>-->
+<!--                    </div>-->
+<!--                    <div class="input-field col s2">-->
+<!--                        <a><i class="material-icons">search</i></a>-->
+<!--                    </div>-->
+<!--                    <table>-->
+<!--                        <thead>-->
+<!--                        <tr>-->
+<!--                            <th>Search result</th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                            <td>Lab one</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>Lab two</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>Lab three</td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </li>-->
+{{/labModal}}

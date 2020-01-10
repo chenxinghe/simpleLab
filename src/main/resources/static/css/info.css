@@ -1,0 +1,206 @@
+.body{
+	background: linear-gradient(to bottom right, #bdbdbd 20%,#00acc1 40%,#f1cc36 70%,#f56a78);
+}
+.gridbody{
+	background-color: #eee;
+	background-image: linear-gradient(45deg, #e2e2e2 25%, transparent 25%, transparent 75%, #e2e2e2 75%, #e2e2e2),
+	linear-gradient(45deg, #e2e2e2 25%, transparent 25%, transparent 75%, #e2e2e2 75%, #e2e2e2);
+	background-size: 60px 60px;
+	background-position: 0 0, 30px 30px;
+}
+
+.my_cran{
+	background: #00acc1!important;
+}
+
+.my_cran2{
+	background: #00b8ce!important;
+}
+
+.my_yellow{
+	background: #f1cc36!important;
+}
+
+.my_color_red{
+	color: #dd0052;
+}
+
+.my_color_gray{
+	color: #bdbdbd;
+}
+
+.my_color_yellow{
+	color: #f1cc36;
+}
+
+.my_red{
+	background:#dd0052!important;
+}
+
+.my_gray{
+	background: #bdbdbd !important;
+}
+
+.my_rice_yellow{
+	background: rgba(241, 204, 54, 0.28) !important;
+}
+
+.my_pink{
+	background: rgba(221, 86, 131, 0.28) !important;
+}
+
+.upload_pic{
+	height:300px ;
+	width: 300px;
+}
+
+.logo_pic{
+	margin-top: 15%;
+	height: 200px;
+	width: 200px;
+}
+
+.marginright{
+	margin-right: 10px;
+}
+.headermargin{
+	margin-left: 15px;
+}
+.btn_margin{
+	margin_top:15px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+
+}
+/*login page css*/
+.login_radius{
+	border-radius: 10px;
+}
+.usernameicon{
+	float: left!important;
+}
+
+.usernamefill{
+	width: 15%!important;
+}
+.pwlength{
+	width: 75%!important;
+}
+
+.googleimg{
+	width:75%!important;
+	margin: 0;
+
+}
+
+.account_img{
+	height: 50px;
+	width: 50px;
+	margin-top: 10px;
+	margin-right: 10px;
+	/*background: pink;*/
+}
+
+.dropdownoffset{
+	top:60px!important;
+}
+
+.myhide{
+	display: none;
+}
+
+.myshow{
+	display: block;
+}
+
+
+.mycheckbox{
+	width:10%!important;
+	margin-right: auto;
+	margin-left: auto;
+}
+.myIdColumn{
+	width:10%;
+}
+
+.loginbody{
+	width:17%;
+	margin:auto;
+	left:0;
+	right:0;
+	top:0;
+	bottom: 0;
+}
+.textfieldbox{
+	margin-left: 5px;
+}
+.loginforgot{
+	margin-left:15px;
+}
+.logintext{
+	margin-right: 15px;
+}
+
+.myborder{
+	border:1px solid black;
+	margin-right: 5px;
+}
+
+.mycenter{
+	/*left: 0;*/
+	/*right: 0;*/
+	/*top: 0;*/
+	/*bottom: 0;*/
+	margin-top: auto;
+	margin-bottom: auto;
+
+}
+
+.eqmainbody{
+	height: 80%;
+	/*background: pink;*/
+}
+
+.eqcreatenew{
+	width: 10%;
+	/*background: blue;*/
+	height:5%;
+	margin-top: 25%;
+	margin-right: auto;
+	margin-left: auto;
+
+
+}
+.eqmodalheight{
+	height:50%
+}
+
+.modalheight{
+	min-height: 50%!important;
+	max-height: 85%!important;
+	width: 68%!important;
+}
+.madalheight{
+
+	max-height: 80%!important;
+	width: 68%!important;
+}
+
+.tags_field{
+	min-height: 50px;
+}
+
+.labheight{
+	height: 300px!important;
+	overflow-y: auto;
+}
+
+.labdescriptionheight{
+	height: 135px;
+	overflow-y: auto;
+	background: #e1e1e1;
+}
+
+.unitmargin{
+	margin-left:-10%;
+}

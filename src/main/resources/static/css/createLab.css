@@ -1,0 +1,454 @@
+/*remove table css from materialize*/
+
+table, th, td {
+}
+
+table {
+
+}
+
+table.striped tr {
+}
+
+
+
+table.striped > tbody > tr:nth-child(odd) {
+}
+
+table.striped > tbody > tr > td {
+}
+
+table.highlight > tbody > tr {
+
+}
+
+table.highlight > tbody > tr:hover {
+
+}
+
+table.centered thead tr th, table.centered tbody tr td {
+
+}
+
+tr {
+
+}
+
+td, th {
+
+}
+
+
+
+
+/*-----------------------------------*/
+
+
+
+
+.body{
+    background-color: #eee;
+    background-image: linear-gradient(45deg, #e2e2e2 25%, transparent 25%, transparent 75%, #e2e2e2 75%, #e2e2e2),
+    linear-gradient(45deg, #e2e2e2 25%, transparent 25%, transparent 75%, #e2e2e2 75%, #e2e2e2);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+}
+
+.draggable_item{
+    width: 140px;
+    max-height: 140px;
+}
+
+.itembarheight{
+    height:100%;
+}
+
+.selected{
+    border:3px dashed ;
+    z-index: 50;
+    background: rgba(41, 174, 193, 0.27);
+}
+
+.zdeep{
+    z-index: 100;
+}
+
+.popup_dialog{
+    width: 600px!important;
+    height: 300px!important;
+}
+
+.popup_dialog_header{
+    margin-left: 15px!important;
+    font-size: 30px;
+}
+
+.number_picker{
+    background: #f0f0f0 !important;
+}
+
+.zeromargin{
+    margin: 0!important;
+}
+
+.zeropadding{
+    padding: 0!important;
+}
+
+.item_img{
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+
+}
+.operation_area{
+    height: 80%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /*border:1px solid black;*/
+}
+.fixed{
+    position: fixed!important;
+}
+
+.infobar{
+    z-index: 1000;
+    display: none;
+    position:absolute;
+    top:16%;
+    right: 5px;
+    width: 15%;
+    max-height:50%;
+    /*border:2px solid black;*/
+    border-radius: 5px;
+}
+
+.sidebar{
+    left: -17.5%;
+    /*left: 0%;*/
+    z-index: 1000;
+    float: left;
+    position: fixed;
+    width: 20%;
+    height:100%;
+    transition: 0.3s;
+    border-radius: 5px;
+    /*background: white;*/
+}
+
+.sidebarhover:hover{
+    left:0px;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.sidebar_info{
+    width: 88%;
+    height: 100%;
+    background: white;
+    margin: 0;
+    padding: 0;
+    float: left;
+
+}
+
+.sidebar_add{
+    margin-right: 15px;
+}
+
+
+
+.my_white{
+    background: white;
+}
+
+.sidebar_trigger{
+    max-height: 100%;
+    height: 100%!important;
+    width:12%;
+    margin: 0;
+    padding: 0;
+    float: left;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.delete_empty{
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.tabs{
+    height: auto!important;
+    white-space: normal;
+}
+.tab{
+    display: block!important;
+    height: 20%!important;
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 0!important;
+}
+
+.tab_content{
+    height: 200px!important;
+    width: 100%;
+}
+
+.indicator{
+    display: none;
+}
+.vtext1{
+    margin-top: 50px;
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    margin-left: 0!important;
+    margin-right: 0!important;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+
+.vtext2{
+    margin-top: 68px;
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    margin-left: 0!important;
+    margin-right: 0!important;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+
+.vtext3{
+    margin-top: 40px;
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    margin-left: 0!important;
+    margin-right: 0!important;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+
+.eq_upload{
+    width: 50%;
+}
+
+.eq_form{
+    padding: 15px;
+
+}
+.eq_maigin{
+    margin-left: 10px!important;
+}
+.eq_modal{
+    max-height: 55%!important;
+    width: 70%!important;
+
+
+}
+
+.sortable-highlight{
+    height: 2.5em; line-height: 2.5em;
+}
+/*.sortable li { font-size: 1.5em; height: 2em;line-height: 2em; }*/
+
+
+.selectable .ui-selected {
+    background: #00acc1!important;
+    color: white!important; }
+.selectable li { background: white;}
+.selectable li:hover { background: #e6e6e6;}
+
+.recipemodal{
+    height:40%!important;
+    width: 50%!important;
+
+}
+
+
+.recipeimg{
+    width: 30%!important;
+    height: 20%!important;
+}
+
+.width_100px{
+     width: 100px;
+ }
+
+.width_150px{
+    width: 150px;
+}
+
+.height_150px{
+    height: 150px;
+}
+
+.margintop{
+    margin-top: 2%!important;
+}
+.margintop10{
+    margin-top: 1%!important;
+}
+
+.margintop4{
+    margin-top:4%!important;
+}
+
+.recipeheight{
+    height: 40%!important;
+}
+.padding4{
+    padding: 1%!important;
+
+}
+.fontheader{
+    font-size: 20px;
+}
+.width2{
+    width: 48%!important;
+}
+
+.height6{
+    height:60%!important;
+}
+
+.height100{
+    height:100%!important;
+}
+
+.width3{
+    width: 46%!important;
+}
+.equipmentheight{
+    height: 75%!important;
+
+}
+
+.scrollbar_x{
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.scrollbar_y{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.card_selected{
+    background: rgba(0, 0, 0, 0.10);
+
+}
+
+.recipesavebtn{
+    margin-top: 1%!important;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+.parent_height{
+    height: 100%!important;
+}
+
+.parent_weight{
+    width: 100%;
+}
+
+padding20px{
+
+}
+
+.stepsavebtn{
+    margin-top: 1%;
+    margin-right: 4%;
+    margin-bottom: 2%;
+
+}
+.height8{
+    height:80%!important;
+}
+
+.step_img {
+    width: 150px!important;
+    height: 150px!important;
+
+}
+
+.steptopmargin{
+    margin-top:2%;
+}
+
+.recipebotheight{
+    height: 80%!important;
+}
+
+
+.eqmli_selected{
+    background: rgba(0, 0, 0, 0.10);
+}
+
+.recipedeletebtn{
+    margin-bottom: 10px;
+}
+.recipewidth{
+    width: 70%;
+}
+.recipefont{
+    font-size: 25px;
+}
+
+.height80{
+    height: 80%!important;
+}
+
+.height90{
+    height: 80%!important;
+}
+
+.right-button{
+    position: fixed;
+    left: 95%;
+    top: 90%;
+}
+
+.ulstyle{
+
+    /*border: black 1px solid;*/
+}
+
+.ulstyle li{
+    /*border-top: black 1px dotted;*/
+    margin-top: 10px;
+    /*padding-bottom: 1px!important;*/
+    box-shadow: 0 10px 6px -6px #eee1db;
+}
+
+.ulstyle li:first-child{
+    border-top: none;
+    margin-top: 15px!important;
+}
+
+.unitmargin{
+    margin-left:-10%;
+}
+
+#step_list collapsible-body{
+ }
+
+.tipstextfield{
+    width: 100%;
+    min-height:10%;
+    background: #e4e4e4;
+}
+
+.icontoright{
+    display: block!important;
+}

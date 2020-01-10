@@ -1,0 +1,432 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--Import Google Icon Font-->
+    <link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}" rel="stylesheet">
+    <!--Import css-->
+    <link rel="stylesheet" th:href="@{../../css/info.css}">
+    <link rel="stylesheet" th:href="@{../../css/createLab.css}">
+    <link rel="stylesheet" th:href="@{../../css/equipment.css}">
+    <link rel="stylesheet" th:href="@{../../css/crop.css}">
+    <!--    <link type="text/css" rel="stylesheet" th:href="@{../../css/bootstrap.min.css}" media="screen,projection"/>-->
+    <link type="text/css" rel="stylesheet" th:href="@{../../css/materialize.css}" media="screen,projection"/>
+    <!--Import js lib-->
+    <script type="text/javascript" th:src="@{../../libs/jquery-1.9.1.js}"></script>
+    <script type="text/javascript" th:src="@{../../libs/jquery-ui.js}"></script>
+    <script type="text/javascript" th:src="@{../../libs/mustache.js}"></script>
+    <!--    <script type="text/javascript" th:src="@{../../libs/bootstrap.min.js}"></script>-->
+    <!--Import js-->
+    <script type="text/javascript" th:src="@{../../js/tools.js}"></script>
+    <script type="text/javascript" th:src="@{../../js/accountInfo/accountInfo.js}"></script>
+    <script type="text/javascript" th:src="@{../../js/setuplab/main.js}"></script>
+    <!--Template-->
+    <script id="modalAccTpl" type="x-tmpl-mustache" th:src="@{../../js/accountInfo/modalAccount.html}"></script>
+    <script id="modalEquip" type="x-tmpl-mustache" th:src="@{../../js/template/modalEquip.html}"></script>
+    <script type="text/javascript"> templatePreLoad()</script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Setup</title>
+    <link rel="icon" type="image/png" href="../../img/icon.png" sizes="32x32"/>
+</head>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    LAB_INFO = {
+        id:  /*[[${lab_id}]]*/ "",
+        name:  /*[[${lab_name}]]*/ ""
+    }
+    /*]]>*/
+    $(function () {
+        $("#tabs").tabs();
+    });
+</script>
+
+<body class="body delete_empty">
+
+<div id="equipmentModal" class="modal eq_modal">
+</div>
+
+<nav class="delete_empty">
+    <div class="nav-wrapper row" style="background: #00acc1;">
+        <a href="#" class="brand-logo offset-s1" style="padding-top: 10px; padding-left: 10px;">Simple Lab</a>
+        <a class='dropdown-trigger right' href='#' data-target='dropdown1'><img class="account_img"
+                                                                                src="../../img/name.png"></a>
+    </div>
+</nav>
+<!-- Dropdown Structure -->
+<ul id='dropdown1' class='dropdown-content dropdownoffset'>
+    <li><a href="../../teacher">Home</a></li>
+    <li class="accountDia"><a class=" modal-trigger" href="#modalAccount">Account</a></li>
+    <li><a href="/logout">Logout</a></li>
+</ul>
+
+<!-- Modal Structure -->
+<div id="modalAccount" class="modal">
+    <div class="modal-content">
+        <ul class="collapsible">
+
+        </ul>
+    </div>
+</div>
+
+<nav class="delete_empty">
+    <div class="nav-wrapper row" style="background: #00acc1">
+        <div class="col s12 valign-wrapper" style="background: #00b8ce; height: 30px; margin-top: 20px;">
+            <a href="../../" class="breadcrumb" th:text="${home_navig}">Home</a>
+            <a href="#" class="breadcrumb" th:text="'SetLab: '+ ${lab_name}">lab</a>
+            <!--            <a href="#!" class="breadcrumb" th:text="lab-${lab_name}}">Lab</a>-->
+            <!--      <a href="#!" class="breadcrumb"></a>-->
+        </div>
+    </div>
+</nav>
+
+
+<!--**********************************************************************main body*********************************************************************************************************-->
+<div class="row"></div>
+<div class="row"></div>
+<div class="container">
+    <ul class="tabs tabs-fixed-width z-depth-1">
+        <li class="tab "><a href="#equipment_in_lab" class="active"> Equipment In Lab</a></li>
+        <li class="tab "><a href="#recipe">Recipe</a></li>
+        <li class="tab "><a href="#steps">Step</a></li>
+    </ul>
+    <div class="row"></div>
+    <div id="equipment_in_lab" class="row" style="height:1000px;">
+        <div class="col s6 delete_empty center">
+            <nav class="deep-orange lighten-4 col s11 z-depth-2"><h5>Equipment For This Lab</h5></nav>
+            <div class="col s11 center-align delete_empty z-depth-5">
+                <ul class="my_white equipmentheight scrollbar_y height80 delete_empty ulstyle"
+                    id="lab_equipment_list"></ul>
+            </div>
+            <script id="labequip_list_template" type="mustache">
+                <div class="row sidebaritem">
+                    <div class="col s2 crop ">
+                        <img src="../../../image/rest/{{id}}" class="cropimg5">
+                    </div>
+                    <div class="col s4">
+                        <p>Name: {{name}}</p>
+                        <p>Type: {{type}}</p>
+                    </div>
+                    {{^machine}}
+                    <div class="col s4">
+                    {{#liquid}}
+                        <p>Max Volume: {{properties.max_volume}}</p>
+                    {{/liquid}}
+                {{#solid}}
+                        <p>Max Weight: {{properties.max_weight}}</p>
+                    {{/solid}}
+                        <p>Temperature: {{properties.max_temperature}}</p>
+                    </div>
+                    {{/machine}}
+                {{#machine}}
+                    <div class="col s4"></div>
+                    {{/machine}}
+                    <div class="col s2 margintop4">
+                        <a href="# " class="my_red btn center"><i class="material-icons">delete</i></a>
+                    </div>
+                </div>
+
+            </script>
+
+        </div>
+        <div class="col s6 delete_empty center">
+            <nav class="deep-orange lighten-4 col s11 right z-depth-2"><h5>All Equipments</h5></nav>
+            <div class="col s11 right center-align delete_empty z-depth-5">
+                <ul class="my_white equipmentheight scrollbar_y height80 delete_empty ulstyle" id="all_equipment"></ul>
+            </div>
+            <script id="allequip_list_template" type="mustache">
+                <div class="row sidebaritem">
+                    <div class="col s2 crop">
+                        <img src="../../../image/rest/{{id}}" class="cropimg5">
+                    </div>
+                    <div class="col s4">
+                        <p>Name: {{name}}</p>
+                        <p>Type: {{type}}</p>
+                    </div>
+                    {{^machine}}
+                    <div class="col s4">
+                    {{#liquid}}
+                        <p>Max Volume: {{properties.max_volume}}</p>
+                    {{/liquid}}
+                {{#solid}}
+                        <p>Max Weight: {{properties.max_weight}}</p>
+                    {{/solid}}
+                        <p>Temperature: {{properties.max_temperature}}</p>
+                    </div>
+                    {{/machine}}
+                {{#machine}}
+                    <div class="col s4"></div>
+                    {{/machine}}
+                    <div class="col s2 margintop4">
+                         <a href="# " class="my_red btn center"><i class="material-icons">add</i></a>
+                    </div>
+                </div>
+
+            </script>
+        </div>
+    </div>
+    <div id="recipe" class="row">
+
+        <div class="delete_empty col s12 white recipeheight z-depth-2 ">
+            <!--            <nav class="center-align"><h3>create your recipe</h3></nav>-->
+            <nav class="col s12 delete_empty center-align deep-orange lighten-4"><h5>Proportion Of Recipe</h5></nav>
+            <div id="equip1" class="col s4 center margintop">
+                <div class="center col s10 offset-s1 z-depth-1 padding4 recipe_equips" id="equip_1">
+                    <p class="fontheader">Equipment 1</p>
+                    <div class=" col s4 offset-s4">
+                        <div class="crop">
+                            <img src="../../img/percentage.png" class="cropimg5 ">
+                        </div>
+                    </div>
+                    <input type="number" placeholder="proportion for item one"
+                           class="col s8 offset-s2 center-align click_ignore">
+                </div>
+            </div>
+            <div id="equip2" class="col s4 center margintop">
+                <div class="center col s10 offset-s1 z-depth-1 padding4 recipe_equips" id="equip_2">
+                    <p class="fontheader">Equipment 2</p>
+                    <div class=" col s4 offset-s4">
+                        <div class="crop">
+                            <img src="../../img/percentage.png" class="cropimg5 ">
+                        </div>
+                    </div>
+                    <input type="number" placeholder="proportion for item two"
+                           class="col s8 offset-s2 center-align click_ignore">
+                </div>
+            </div>
+            <div id="equip3" class="col s4 center margintop">
+                <div class="center col s10 offset-s1 z-depth-1 padding4 recipe_equips" id="equip_r">
+                    <p class="fontheader">Equipment 3</p>
+                    <div class=" col s4 offset-s4">
+                        <div class="crop">
+                            <img src="../../img/percentage.png" class="cropimg5 ">
+                        </div>
+                    </div>
+                    <input type="number" placeholder="proportion for item three"
+                           class="col s8 offset-s2 center-align click_ignore">
+                </div>
+            </div>
+            <div class="row parent_weight">
+                <div class="delete_empty"><a id="recipe_save_btn" class="btn my_red right recipesavebtn">Save<i
+                        class="material-icons right">save</i></a></div>
+                <div class="delete_empty"><a id="recipe_new_btn" class="btn my_red right recipesavebtn">New <i
+                        class="material-icons right">create</i></a></div>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="width2  white left height8 z-depth-2">
+                <nav class="col s12 delete_empty center-align my_rice_yellow"><h5>Recipe</h5></nav>
+                <div class="row"></div>
+                <ul class="row my_white height100 scrollbar_y ulstyle" id="recipe_list"></ul>
+                <script id="recipe_template" type="mustache">
+                    <div class="row">
+                        <div class="col s11">
+                            <div class="col s4 center-align">{{equipmentOne.name}}({{ratioOne}})</div>
+                            <div class="col s1 center"><i class="material-icons ">add</i></div>
+                            <div class="col s4 center-align">{{equipmentTwo.name}}({{ratioTwo}})</div>
+                            <div class="col s1 center"><i class="material-icons ">arrow_forward</i></div>
+                            <div class="col s2 center-align">{{result.name}}({{ratioThree}})</div>
+                        </div>
+                        <div class="col s1">
+                            <a href="#"><i class="material-icons ">delete</i></a>
+                        </div>
+                    </div>
+<!--({{equipmentOne.type}})({{equipmentTwo.type}})-->
+
+                </script>
+            </div>
+            <div class="width2  white right height8 z-depth-2">
+                <nav class="col s12 delete_empty center-align my_rice_yellow"><h5>Current Equipments</h5></nav>
+                <div class="row"></div>
+                <ul class="row my_white height100 scrollbar_y ulstyle selectable" id="recipe_equip_list"></ul>
+                <script id="recequip_list_template" type="mustache">
+                    <div class="row sidebaritem">
+                        <div class="col s2 crop">
+                            <img src="../../../image/rest/{{id}}" class="cropimg5">
+                        </div>
+                        <div class="col s4">
+                            <p>Name: {{name}}</p>
+                            <p>Type: {{type}}</p>
+                        </div>
+                        {{^machine}}
+                        <div class="col s4">
+                        {{#liquid}}
+                            <p>Max Volume: {{properties.max_volume}}</p>
+                        {{/liquid}}
+                    {{#solid}}
+                            <p>Max Weight: {{properties.max_weight}}</p>
+                        {{/solid}}
+                            <p>Temperature: {{properties.max_temperature}}</p>
+                        </div>
+                        {{/machine}}
+                    {{#machine}}
+                        <div class="col s4"></div>
+                        {{/machine}}
+                    </div>
+
+                </script>
+            </div>
+        </div>
+    </div>
+    <div id="steps" class="row">
+        <nav class="col s12 delete_empty center-align deep-orange lighten-4"><h5>Step</h5></nav>
+        <div id="step_card" class="delete_empty col s12 white recipeheight z-depth-2 valign-wrapper ">
+            <div class="col s4">
+                <div class="col s8 offset-s2 z-depth-1 padding4 height6 center-align ">
+                    <p class="fontheader ">Target</p>
+                    <div class="margintop col s4 offset-s4 center">
+                        <div class="crop  ">
+                            <img src="../../img/percentage.png" class="cropimg5 ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s8 ">
+                <div class="col s12 margintop10">
+                    <div class="col s2 steptopmargin">Step Name:</div>
+                    <div class="col s10">
+                        <input id="step_name" type="text" class="center-align ">
+                    </div>
+                </div>
+                <div class="col s12 margintop10">
+                    <div class="col s2 steptopmargin">Volume:</div>
+                    <div class="col s10">
+                        <input id="step_volume" type="number" class="center-align "><span class="unitmargin">L</span>
+                    </div>
+                </div>
+                <div class="col s12 margintop10">
+                    <div class="col s2 steptopmargin">Weight:</div>
+                    <div class="col s10">
+                        <input id="step_weight" type="number" class="center-align"><span class="unitmargin">Kg</span>
+                    </div>
+                </div>
+                <div class="col s12 margintop10">
+                    <div class="col s2 steptopmargin">Temperature:</div>
+                    <div class="col s10">
+                        <input id="step_temperature" type="number" class="center-align "><span
+                            class="unitmargin">°C</span>
+                    </div>
+                </div>
+                <div class="col s12 margintop10">
+                    <div class="col s2 steptopmargin">TIPS:</div>
+                    <div class="col s10">
+                        <input id="step_tips" placeholder="tips for this step" type="text" class="center-align ">
+                    </div>
+                </div>
+                <div class="col s12 margintop10">
+                    <a id="" class="btn my_red  stepsavebtn right">Save<i class="material-icons right">save</i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="width2  white left height6 z-depth-2">
+                <nav class="col s12 delete_empty center-align my_rice_yellow"><h5>Step</h5></nav>
+                <div class="row"></div>
+                <ul class="row my_white height100 scrollbar_y ulstyle selectable" id="step_list"></ul>
+                <script id="step_list_template" type="mustache">
+                    <div class="row sidebaritem">
+                        <div class="col s2 crop">
+                            <img src="../../../image/rest/{{targetObject.id}}" class="cropimg5">
+                        </div>
+                        <div class="col s4">
+                            <p id="stepNum" stepNum={{stepNum}}>Step - {{stepNum}}</p>
+                            <p>Name: {{targetObject.name}}</p>
+                            <p>Type: {{targetObject.type}}</p>
+                        </div>
+                        {{^targetObject.machine}}
+                        <div class="col s4">
+                        {{#targetObject.liquid}}
+                            <p>Require Volume: {{targetVolume}}</p>
+                        {{/targetObject.liquid}}
+                    {{#targetObject.solid}}
+                            <p>Require Weight: {{targetWeight}}</p>
+                        {{/targetObject.solid}}
+                            <p>Require Temperature: {{targetTemperature}}</p>
+                        </div>
+                        {{/targetObject.machine}}
+                    {{#targetObject.machine}}
+                        <div class="col s4"></div>
+                        {{/targetObject.machine}}
+                        <div class="col s2">
+                            <a class="step_move_up btn my_red"><i class="material-icons step_move_up">keyboard_arrow_up</i></a>
+                            <a class="step_move_down btn my_red"><i class="material-icons step_move_down">keyboard_arrow_down</i></a>
+                            <a class="step_remove btn my_red"><i class=" material-icons step_remove">delete</i></a>
+                        </div>
+                    </div>
+
+                </script>
+            </div>
+            <div class="width2 height6 white right z-depth-2 ">
+                <nav class="col s12 delete_empty center-align my_rice_yellow"><h5>Equipment</h5></nav>
+                <div class="row"></div>
+                <ul class="row my_white height100 scrollbar_y ulstyle selectable" id="step_equip_list"></ul>
+                <script id="stepequip_list_template" type="mustache">
+                    <div class="row sidebaritem">
+                        <div class="col s2 crop">
+                            <img src="../../../image/rest/{{id}}" class="cropimg5">
+                        </div>
+                        <div class="col s4">
+                            <p>Name: {{name}}</p>
+                            <p>Type: {{type}}</p>
+                        </div>
+                        {{^machine}}
+                        <div class="col s4">
+                        {{#liquid}}
+                            <p>Max Volume: {{properties.max_volume}}</p>
+                        {{/liquid}}
+                    {{#solid}}
+                            <p>Max Weight: {{properties.max_weight}}</p>
+                        {{/solid}}
+                            <p>Temperature: {{properties.max_temperature}}</p>
+                        </div>
+                        {{/machine}}
+                    {{#machine}}
+                        <div class="col s4"></div>
+                        {{/machine}}
+                    </div>
+
+
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="right-button">
+    <a th:href="@{'../dolab/'+ ${lab_id}}" class="btn-floating btn-large waves-effect waves-light my_red"><i
+            class="material-icons">play_arrow</i></a>
+</div>
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" th:src="@{../../libs/materialize.min.js}"></script>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        M.updateTextFields();
+        M.AutoInit();
+        $('.fixed-action-btn').floatingActionButton();
+        $(".sortable").sortable({
+            placeholder: "sortable-highlight"
+        });
+        $(".selectable").selectable();
+        $("#selectable").selectable();
+        $('.modal').modal();
+        $('.dropdown-trigger').dropdown();
+        $('.tabs').tabs();
+
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, {
+            accordion: false
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var instances = M.Dropdown.init(elems, {
+            // hover: true
+        });
+    });
+</script>
+</html>

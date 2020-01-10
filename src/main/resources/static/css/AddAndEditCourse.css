@@ -1,0 +1,92 @@
+
+.coursename{
+	width:50%;
+	margin-left: 25%;
+	height: 10%;
+
+
+}
+.coursenametitle{
+	width: 20%;
+	height: 100%;
+	float: left;
+}
+.coursenametext{
+	margin-top: 2%;
+	width: 49%;
+	height: 100%;
+	float: left;
+	/*background: green;*/
+}
+
+.des_title{
+	width:50%;
+	margin-left: 25%;
+	margin-top: 3%;
+	height: 10%;
+	/*background: red;*/
+}
+
+.textarea{
+	margin-left: 25%;
+	width:50%;
+	height:40%;
+	opacity: 0.8;
+	/*background: red;*/
+}
+
+
+
+
+.bot-bot{
+	margin-left: 20%;
+	top:25%;
+	width:60%;
+	position: absolute;
+	height:69%;
+	/*border:2px solid red;*/
+
+}
+
+.bot-block{
+	width: 49%;
+	border:2px solid black;
+	height:100%;
+	float: left;
+
+}
+.bot-block-header{
+	width: 100%;
+	height: 6%;
+	border:2px solid black;
+}
+.bot-block-header-name{
+	font-size:28px;
+	float: left;
+	padding-left: 5%;
+}
+
+.bot-block-header-more{
+	font-size:28px;
+	float: right;
+	padding-right:5%;
+}
+.bot-content{
+	/*background: white;*/
+	border:2px solid black;
+	height: 93%;
+	width: 100%;
+	/*margin-left: auto;
+	margin-right: auto;*/
+
+}
+
+.coursesavebtn{
+	position: absolute;
+	left:1300px;
+	top:600px;
+	width: 150px;
+	height: 50px;
+	background-color: dodgerblue;
+	border-radius: 10px;
+}
